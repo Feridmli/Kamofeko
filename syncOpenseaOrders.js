@@ -3,7 +3,7 @@
  * Node.js ≥18 (global fetch)
  */
 
-const BACKEND_URL = process.env.BACKEND_URL || "https://sənin-app.onrender.com";
+const BACKEND_URL = process.env.BACKEND_URL || "https://kamofeko.onrender.com";
 const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS;
 const PROXY_CONTRACT_ADDRESS = process.env.PROXY_CONTRACT_ADDRESS;
 const OPENSEA_API_KEY = process.env.OPENSEA_API_KEY;
