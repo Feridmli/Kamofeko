@@ -1,0 +1,31 @@
+name: OpenSea Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run OpenSea Sync
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          OPENSEA_API_KEY: ${{ secrets.OPENSEA_API_KEY }}
+          NFT_CONTRACT_ADDRESS: ${{ secrets.NFT_CONTRACT_ADDRESS }}
+          PROXY_CONTRACT_ADDRESS: ${{ secrets.PROXY_CONTRACT_ADDRESS }}
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+        run: node syncOpenseaOrders.js
